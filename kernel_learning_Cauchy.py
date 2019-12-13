@@ -25,7 +25,7 @@ cauchy_feature = np.random.laplace(0,gamma,(N,n_components))
 X_features = X_train.dot(cauchy_feature)
 X_features = (1/np.sqrt(n_components))*np.concatenate((np.cos(X_features),np.sin(X_features)),axis=1)
 
-clf = LogisticRegression(C=.01)
+clf = LogisticRegression(C=50)
 clf.fit(X_features, y_train)
 
 X_test = X_test.dot(cauchy_feature)

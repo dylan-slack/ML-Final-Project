@@ -23,12 +23,12 @@ n_components = 3750
 rbf_feature = np.random.randn(N,n_components)*np.sqrt(gamma)
 
 X_features = X_train.dot(rbf_feature)
-X_features = np.concatenate((np.cos(X_features),np.sin(X_features)),axis=1)
+X_features = (1/np.sqrt(n_components))*np.concatenate((np.cos(X_features),np.sin(X_features)),axis=1)
 
-clf = LogisticRegression(C=.01)
+clf = LogisticRegression(C=50)
 clf.fit(X_features, y_train)
 
 X_test = X_test.dot(rbf_feature)
-X_test = np.concatenate((np.cos(X_test),np.sin(X_test)),axis=1)
+X_test = (1/np.sqrt(n_components))*np.concatenate((np.cos(X_test),np.sin(X_test)),axis=1)
 
 print ("Final Accuracy: %s" % accuracy_score(y_test, clf.predict(X_test)))

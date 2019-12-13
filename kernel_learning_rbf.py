@@ -25,7 +25,7 @@ rbf_feature = np.random.randn(N,n_components)*np.sqrt(gamma)
 X_features = X_train.dot(rbf_feature)
 X_features = (1/np.sqrt(n_components))*np.concatenate((np.cos(X_features),np.sin(X_features)),axis=1)
 
-clf = LogisticRegression(C=.01)
+clf = LogisticRegression(C=50)
 clf.fit(X_features, y_train)
 
 X_test = X_test.dot(rbf_feature)
